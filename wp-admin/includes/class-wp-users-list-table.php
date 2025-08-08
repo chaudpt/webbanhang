@@ -517,7 +517,7 @@ class WP_Users_List_Table extends WP_List_Table {
 			 *                              'Edit', 'Remove' for Multisite.
 			 * @param WP_User  $user_object WP_User object for the currently listed user.
 			 */
-			$actions = apply_filters( '', $actions, $user_object );
+			$actions = apply_filters( 'user_row_actions', $actions, $user_object );
 
 			// Role classes.
 			$role_classes = esc_attr( implode( ' ', array_keys( $user_roles ) ) );

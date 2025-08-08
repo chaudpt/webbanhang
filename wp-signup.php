@@ -1,4 +1,11 @@
 <?php
+/**
+ * WordPress Signup Page
+ *
+ * Handles the user registration and site creation process for multisite installations.
+ *
+ * @package WordPress
+ */
 
 /** Sets up the WordPress Environment. */
 require __DIR__ . '/wp-load.php';
@@ -61,7 +68,7 @@ function wpmu_signup_stylesheet() {
 		.mu_register form { margin-top: 2em; }
 		.mu_register fieldset,
 			.mu_register legend { margin: 0; padding: 0; border: none; }
-		.mu_register .error { font-weight: 600; padding: 10px; color: #333; background: #ffebe8; border: 1px solid #c00; }
+		.mu_register .error { padding: 10px; color: #333; background: #ffebe8; border: 1px solid #c00; }
 		.mu_register input[type="submit"],
 			.mu_register #blog_title,
 			.mu_register #user_email,
@@ -496,7 +503,7 @@ function validate_another_blog_signup() {
 	 */
 	$meta = apply_filters( 'add_signup_meta', $meta_defaults );
 
-	$blog_id = wpmu_create_blog( $domain, $path, $blog_title,->ID, $meta, get_current_network_id() );
+	$blog_id = wpmu_create_blog( $domain, $path, $blog_title, $current_user->ID, $meta, get_current_network_id() );
 
 	if ( is_wp_error( $blog_id ) ) {
 		return false;
